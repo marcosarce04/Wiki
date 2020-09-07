@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+New Wiki Page
+{% endblock %}
+
+{% block body %}
+
+<form action="savedition" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <h5 for="testArea">Edit the content of the Wiki entry for {{title}}:</h5>
+        <textarea class="form-control col-md-10"  name="content"
+         aria-describedby="contentHelp" rows="10">{{content}}</textarea>
+        <small id="contentHelp" class="form-text text-muted">Edit the content for your {{title}} Wiki entry.</small>
+        <input type="hidden" name="title" value="{{title}}">
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Save">
+    </div>
+</form>
+
+{% endblock %}
